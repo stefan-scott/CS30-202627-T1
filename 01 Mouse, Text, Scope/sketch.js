@@ -22,6 +22,7 @@ function updateSquare(){
   if(keyCode===40 && keyIsPressed){
     y+=2;
   }
+  // use keyIsDown() to handle multiple keypresses
   if(keyIsDown(LEFT_ARROW)){
     x -= 5;
   }
