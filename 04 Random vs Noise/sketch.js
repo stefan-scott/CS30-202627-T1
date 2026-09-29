@@ -10,6 +10,8 @@ let x2;  let y2;
 let noiseTime = 10;  let noiseSpeed = 0.01;
 // noiseTime → current coordinate on noise graph
 // noiseSpeed → rate a which we move down the graph
+let x3 = 400; let y3 = 200;
+
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -27,6 +29,22 @@ function draw() {
                 //stabilize random()
   randomCircle();
   noiseCircle();
+  moveCircle();
+}
+
+function moveCircle(){
+  //CHALLENGE:   using perlin noise(), draw a
+  //             40px circle that moves left or right
+  //             randomly, wrapping around if it 
+  //             leaves the screen.
+  let dX = noise(noiseTime); //0-1
+  dX = map(dX, 0, 1, -5, 5);
+  x3 += dX;
+  circle(x3, y3, 40);
+
+  // wrap around
+  if (x3 > width) x3 = 0;
+  else if (x3 < 0) x3 = width;
 }
 
 function noiseCircle(){
