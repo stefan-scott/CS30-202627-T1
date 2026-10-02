@@ -12,6 +12,14 @@ async function setup() {
 
 }
 
+function keyPressed(){
+  rectWidth ++;
+  //what happens to generateTerrain()
+  //if rectWidth becomes 0??
+  background(220);
+  generateTerrain();
+}
+
 function generateTerrain(){
   //using many skinny
   //rectangles, generate
@@ -20,6 +28,8 @@ function generateTerrain(){
     //first, generate a [random] height
     let h = random(0,height);
     //BUT, change this to use noise()...
+    //let h = ...noise() stuff
+
 
     //draw the rectangle
     rect(x, height, rectWidth, -h);
