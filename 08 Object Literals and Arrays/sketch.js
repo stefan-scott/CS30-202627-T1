@@ -66,7 +66,7 @@ function draw() {
     b.lifeTime--;
     if(b.lifeTime < 1){ 
       //.splice(pos, #ofItemToDel, [add])  deletes items from array 
-      ballArray.splice(i, 1);
+      ballArray.splice(i, 1); 
     }
   }
 
