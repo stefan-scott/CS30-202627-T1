@@ -4,6 +4,13 @@
  
 // Global Variables
 let myBook; //can't INIT objects here...
+// Challenge One:  add and display two more books!
+//                 one softcover / one hardcover
+//
+// Challenge Two:  fill an array with 5 books
+//                 use same title, author for each
+//                 numeric can be random / pattern
+
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
