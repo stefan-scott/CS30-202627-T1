@@ -8,10 +8,7 @@ let dir = "left";
 let pinImages = [];
 let pinIndex = 0;
 
-async function setup() {
-  createCanvas(windowWidth, windowHeight);
-  imageMode(CENTER);
-
+async function loadAssets(){
   //pinwheel images  0-8
   for(let i = 0; i < 9; i++){
     pinImages.push(await loadImage("/assets/pin-0"+ i + ".png"));
@@ -22,6 +19,15 @@ async function setup() {
   lionR = await loadImage("/assets/lion-right.png");
 }
 
+
+
+async function setup() {
+  createCanvas(windowWidth, windowHeight);
+  imageMode(CENTER);
+
+  await loadAssets();
+}
+
 function draw() {
   background(220);
   drawLion();
@@ -29,10 +35,12 @@ function draw() {
 }
 
 function drawPin(){
-  // frameRate(3);
+  // frameRate(3);   frameRate makes a global change - impacts everything in program
+
   image(pinImages[pinIndex], width/2, height*.75);
-  if(frameCount % 4 === 0){
-    pinIndex++; //0,1,2,3,4,5,6,7,8, 
+  if(frameCount % 4 === 0){  // "frame limiting" allows certain code to be run
+                             // less frequently than once per frame.
+    pinIndex++; //0,1,2,3,4,5,6,7,8  then wrap around
     if(pinIndex > 8) pinIndex = 0;
   }
    
