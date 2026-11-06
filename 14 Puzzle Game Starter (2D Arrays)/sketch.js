@@ -23,6 +23,44 @@ async function setup() {
 function draw() {
   background(220);
   renderGrid();
+  getCurrentX();
+}
+
+function getCurrentX(){
+  //determine current col pos of mouse
+  let constrainedX = constrain(mouseX,0,width-1);
+  return int(constrainedX/tileSize);
+}
+
+function getCurrentY(){
+  //determine current row pos of mouse
+  let constrainedY = constrain(mouseY,0,height-1);
+  return int(constrainedY/tileSize);
+}
+
+function flip(x,y){
+  //flip the tile at position (x,y);
+  if(grid[y][x] === 255) grid[y][x] = 0;
+  else grid[y][x] = 255;
+}
+
+function mousePressed(){
+  //only do a flip if mouse is on the Canvas
+  if(mouseX < width && mouseY < height){
+
+    let x = getCurrentX();
+    let y = getCurrentY();
+
+    //ALWAYS:
+    flip(x,y);
+
+    //IF THEY EXIST:
+    //flip the cardinal neighbours (NSEW)
+    if(x-1 >= 0) flip(x-1, y);  //LEFT
+    if(y-1 >= 0) flip(x, y-1);  //UP
+
+    
+  }
 }
 
 function renderGrid(){
